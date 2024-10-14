@@ -6,13 +6,13 @@ on:
                 description: "Your Name"
                 required: true
                 type: string
+        secrets:
+            mySecret: 
+                required: true
 
 jobs:
     build:
         runs-on: ubuntu-latest
-        env:
-            super_secret: ${{ secrets.MY_SECRET}}
-            my_secret: ${{ secrets.MY_SECRET}}
         steps:
             - name: checkout repo
               uses: actions/checkout@v3
