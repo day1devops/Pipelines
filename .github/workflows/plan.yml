@@ -1,9 +1,9 @@
-name: build-test-deploy
+name: build-test-deploy-sample
 on:
     workflow_call:
         inputs:
-            node-version:
-                description: "Node Version"
+            your-name:
+                description: "Your Name"
                 required: true
                 type: string
 
@@ -15,12 +15,8 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v3
             
-            - name: use node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: ${{ inputs.node-version}}
-            - run: npm install
-            - run: npm run build
+            - run: echo "Hello ${{ inputs.your-name }}"
+              
 
     test:
         needs: build
@@ -30,11 +26,6 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v3
             
-            - name: use node.js
-              uses: actions/setup-node@v3
-              with:
-                node-version: ${{ inputs.node-version }}
-            - run: npm install
-            - run: npm run test
+            - run: echo "Testing you name ${{ inputs.your-name }}"
             
 
