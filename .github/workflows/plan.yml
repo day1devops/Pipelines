@@ -14,7 +14,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         env:
-            my_secret: ${{ secrets.mySecret}}
+            mySecert: ${{ secrets.mySecret}}
 
         steps:
             - name: checkout repo
