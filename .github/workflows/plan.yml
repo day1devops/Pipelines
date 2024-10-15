@@ -10,6 +10,10 @@ on:
                 description: "Your Name"
                 required: true
                 type: string
+            REPOSITORY_NAME:
+                description: "Your Name"
+                required: true
+                type: string
         secrets:
             MY_SECRET: 
                 required: true
@@ -57,4 +61,4 @@ jobs:
             with:
                 platforms: linux/amd64,linux/arm64
                 push: true
-                tags: ${{ inputs.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
+                tags: ${{ inputs.DOCKER_USERNAME }}/${{ inputs.REPOSITORY_NAME }}:latest
