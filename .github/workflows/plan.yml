@@ -13,6 +13,9 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        env:
+            my_secret: ${{ secrets.mySecret}}
+
         steps:
             - name: checkout repo
               uses: actions/checkout@v3
