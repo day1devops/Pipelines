@@ -7,14 +7,14 @@ on:
                 required: true
                 type: string
         secrets:
-            mySecret: 
+            MY_SECRET: 
                 required: true
 
 jobs:
     build:
         runs-on: ubuntu-latest
         env:
-            mySecert: ${{ secrets.mySecret}}
+            mySecert: ${{ secrets.MY_SECRET}}
 
         steps:
             - name: checkout repo
