@@ -65,3 +65,21 @@ jobs:
                 tags: ${{ inputs.DOCKER_USERNAME }}/${{ inputs.REPOSITORY_NAME }}:latest
     
     
+    terraform-plan:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v3
+            
+            - run: echo "Run plan ${{ inputs.your-name }}"
+            - run: env
+
+    terraform-apply:
+        if: github.GITHUB_REF_NAME == 'main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repo
+              uses: actions/checkout@v3
+            
+            - run: echo "Terraform apply ${{ inputs.your-name }}"
+            - run: env
