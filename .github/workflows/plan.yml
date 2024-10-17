@@ -73,6 +73,8 @@ jobs:
             
             - run: echo "Run plan ${{ inputs.your-name }}"
             - run: env
+            - run: echo "github ref name ${github.GITHUB_REF_NAME}"
+            - run: echo "github using env ${env.GITHUB_REF_NAME}"
 
     terraform-apply:
         if: github.GITHUB_REF_NAME == 'main'
