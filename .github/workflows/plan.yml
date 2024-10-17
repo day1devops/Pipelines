@@ -73,11 +73,9 @@ jobs:
             
             - run: echo "Run plan ${{ inputs.your-name }}"
             - run: env
-            - run: github.GITHUB_REF_NAME
-            - run: echo "github using env ${env.GITHUB_REF_NAME}"
 
     terraform-apply:
-        if: github.GITHUB_REF_NAME == 'main'
+        if: github.ref_name == 'main'
         runs-on: ubuntu-latest
         steps:
             - name: checkout repo
