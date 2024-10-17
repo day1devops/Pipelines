@@ -44,6 +44,7 @@ jobs:
               uses: actions/checkout@v3
             
             - run: echo "Testing you name ${{ inputs.your-name }}"
+            - run: env
             
 
     build-push:
@@ -62,3 +63,5 @@ jobs:
                 platforms: linux/amd64,linux/arm64
                 push: true
                 tags: ${{ inputs.DOCKER_USERNAME }}/${{ inputs.REPOSITORY_NAME }}:latest
+    
+    
