@@ -31,7 +31,7 @@ jobs:
         steps:
             - name: checkout repo
               uses: actions/checkout@v3
-            
+            - run : echo "Running workflow for ${{matrix.cmds}} on branch ${{github.ref_name}}"
             - run: echo "Run ${{matrix.cmds}} ${{ inputs.your-name }}"
             - run: env
     
