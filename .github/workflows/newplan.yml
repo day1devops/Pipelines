@@ -14,6 +14,10 @@ on:
                 description: "Your Name"
                 required: true
                 type: string
+            TAG_NAME:
+                description: "Tag name"
+                required: false
+                type: string
         secrets:
             MY_SECRET: 
                 required: true
@@ -76,4 +80,4 @@ jobs:
             with:
                 platforms: linux/amd64,linux/arm64
                 push: true
-                tags: ${{ inputs.DOCKER_USERNAME }}/${{ inputs.REPOSITORY_NAME }}:latest
+                tags: ${{ inputs.DOCKER_USERNAME }}/${{ inputs.REPOSITORY_NAME }}:${{inputs.TAG_NAME}}
