@@ -31,6 +31,7 @@ jobs:
                 cmds: [plan, apply]
                 exclude: 
                     - cmds: ${{github.ref_name != inputs.branch_name && 'apply' }}
+                    - cmds: ${{github.ref_name == inputs.branch_name && 'plan' }}
         runs-on: ubuntu-latest
         steps:
             - name: checkout repo
