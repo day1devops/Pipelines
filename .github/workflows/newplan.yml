@@ -30,7 +30,7 @@ jobs:
             matrix:
                 cmds: [plan, apply]
                 exclude: 
-                    - cmds: ${{github.ref_name != 'main' && 'apply' || github.ref_name != 'master' && 'apply'}}
+                    - cmds: ${{github.ref_name != 'main' && 'apply' && github.ref_name != 'master' && 'apply'}}
         runs-on: ubuntu-latest
         steps:
             - name: checkout repo
