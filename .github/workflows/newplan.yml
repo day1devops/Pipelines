@@ -2,8 +2,8 @@ name: build-test-deploy-sample
 on:
     workflow_call:
         inputs:
-            your-name:
-                description: "Your Name"
+            branch-name:
+                description: "Your main branch name"
                 required: true
                 type: string
             DOCKER_USERNAME:
@@ -30,13 +30,13 @@ jobs:
             matrix:
                 cmds: [plan, apply]
                 exclude: 
-                    - cmds: ${{github.ref_name != 'main' && 'apply' && github.ref_name != 'master' && 'apply'}}
+                    - cmds: ${{github.ref_name != inputs.branch-name && 'apply' }}
         runs-on: ubuntu-latest
         steps:
             - name: checkout repo
               uses: actions/checkout@v3
             - run : echo "Running workflow for ${{matrix.cmds}} on branch ${{github.ref_name}}"
-            - run: echo "Run ${{matrix.cmds}} ${{ inputs.your-name }}"
+            - run: echo "Run ${{matrix.cmds}} ${{ inputs.branch-name }}"
             - run: env
     
     build:
@@ -48,7 +48,7 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v3
             
-            - run: echo "Hello ${{ inputs.your-name }}"
+            - run: echo "Hello ${{ inputs.branch-name }}"
             - name: run bash script
               run: ./init.sh 
               
@@ -61,7 +61,7 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v3
             
-            - run: echo "Testing you name ${{ inputs.your-name }}"
+            - run: echo "Testing you name ${{ inputs.branch-name }}"
             - run: env
             
 
