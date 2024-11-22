@@ -32,9 +32,14 @@ jobs:
                 isProdBranch:
                     - ${{github.ref_name == 'main' || github.ref_name == 'master'}}
                 exclude: 
-                    - cmds: 'apply'
+                    - cmds: 'plan'
                     # - cmds: ${{github.ref_name != inputs.branch_name && 'apply' || 'plan' }}
                     # - cmds: ${{github.ref_name == inputs.branch_name && 'plan' }}
+                isNonProdBranch:
+                    - ${{github.ref_name != 'main' || github.ref_name != 'master'}}
+                include:
+                    - cmds: 'plan'
+
         runs-on: ubuntu-latest
         steps:
             - name: checkout repo
