@@ -32,7 +32,7 @@ jobs:
                 cmds: [plan, apply]
                 exclude: 
                     # - cmds:  ${{ contains(github.ref_name, 'master') || contains(github.ref_name, 'main') && 'plan' || 'apply'}}
-                    - cmds: ${{ github.ref_name != 'master' && 'apply'|| github.ref_name != 'main' && 'apply'|| 'plan'}}
+                    - cmds: ${{ github.ref_name != 'master' || github.ref_name != 'main' && 'apply'|| 'plan'}}
                     # - cmds: ${{github.ref_name != inputs.branch_name && 'apply' || 'plan' }}
                     # - cmds: ${{github.ref_name == inputs.branch_name && 'plan' }}
                 
