@@ -22,7 +22,7 @@ on:
                 description: "checking the prod branch"
                 required: false
                 type: boolean
-                default: ${{ (github.ref_name != 'master' || github.ref_name != 'main') && true || false}}
+                default: ${{ (github.ref_name == 'master' || github.ref_name == 'main') && true || false}}
         secrets:
             MY_SECRET: 
                 required: true
