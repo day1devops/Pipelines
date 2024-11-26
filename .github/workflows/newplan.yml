@@ -22,7 +22,7 @@ on:
                 description: "checking the prod branch"
                 required: false
                 type: boolean
-                default: ${{ github.ref_name == 'main' || github.ref_name == 'master'}}
+                default: ${{ (github.ref_name != 'master' || github.ref_name != 'main') && true || false}}
         secrets:
             MY_SECRET: 
                 required: true
@@ -38,9 +38,9 @@ jobs:
                 cmds: [plan, apply]
                 exclude: 
                     # - cmds:  ${{ contains(github.ref_name, 'master') || contains(github.ref_name, 'main') && 'plan' || 'apply'}}
-                    # - cmds: ${{ github.ref_name != 'master' || github.ref_name != 'main' && 'apply'|| 'plan'}}
-                    - cmds: ${{ inputs.branch_type == 'false' && 'apply'  }}
-                    - cmds: ${{ inputs.branch_type == 'true' && 'plan'  }}
+                    - cmds: ${{ (github.ref_name != 'master' || github.ref_name != 'main') && 'apply'|| 'plan'}}
+                    # - cmds: ${{ inputs.branch_type == 'false' && 'apply'  }}
+                    # - cmds: ${{ inputs.branch_type == 'true' && 'plan'  }}
                     # - cmds: ${{github.ref_name == inputs.branch_name && 'plan' }}
                 
 
