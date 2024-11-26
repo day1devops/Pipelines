@@ -48,6 +48,7 @@ jobs:
             - name: checkout repo
               uses: actions/checkout@v3
             - run : echo "Running workflow for ${{matrix.cmds}} on branch ${{github.ref_name}}"
+            - run : echo "branch type is ${{inputs.branch_type}}"
             - run: echo "Run ${{matrix.cmds}} ${{ inputs.branch_name }}"
             - run: env
     
