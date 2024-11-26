@@ -1,0 +1,16 @@
+name: "Initialize terraform"
+description: "Initialize the terraform based on the inputs from the GS repos"
+
+inputs:
+  my_secret:
+    description: "My secret"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: run bash script
+      run: ./init.sh 
+      shell: bash
+      env:
+        MY_SECRET: ${{ inputs.my_secret }}

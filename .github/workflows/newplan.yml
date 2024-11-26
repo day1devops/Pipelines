@@ -18,6 +18,11 @@ on:
                 description: "Tag name"
                 required: false
                 type: string
+            branch_type:
+                description: "checking the prod branch"
+                required: false
+                type: boolean
+                default: ${{ github.ref_name == 'main' || github.ref_name == 'master'}}
         secrets:
             MY_SECRET: 
                 required: true
@@ -25,15 +30,16 @@ on:
                 required: true
 
 jobs:
+        
     terrraform:
         strategy:
             max-parallel: 1
             matrix:
                 cmds: [plan, apply]
                 exclude: 
-                    - cmds:  ${{ contains(github.ref_name, 'master') || contains(github.ref_name, 'main') && 'plan' || 'apply'}}
+                    # - cmds:  ${{ contains(github.ref_name, 'master') || contains(github.ref_name, 'main') && 'plan' || 'apply'}}
                     # - cmds: ${{ github.ref_name != 'master' || github.ref_name != 'main' && 'apply'|| 'plan'}}
-                    # - cmds: ${{github.ref_name != inputs.branch_name && 'apply' || 'plan' }}
+                    - cmds: ${{ inputs.branch_type == 'true' && 'apply' || 'plan' }}
                     # - cmds: ${{github.ref_name == inputs.branch_name && 'plan' }}
                 
 
