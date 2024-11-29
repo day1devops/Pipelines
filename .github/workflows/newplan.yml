@@ -50,8 +50,8 @@ jobs:
             MY_SECRET: ${{ secrets.MY_SECRET}}
 
         steps:
-            - name: checkout repo
-              uses: actions/checkout@v3
+            
+            - uses: actions/checkout@v4
             
             - run: echo "Hello ${{ github.ref_name }}"
             - name: Calling actions
