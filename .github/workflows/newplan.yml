@@ -55,7 +55,7 @@ jobs:
             
             - run: echo "Hello ${{ github.ref_name }}"
             - name: Calling actions
-              uses: ./.github/actions/terraform-init/action.yml
+              uses: day1devops/Pipelines/.github/actions/terraform-init/action.yml@main
               with:
                 MY_SECRET: ${ MY_SECRET }
               
