@@ -9,6 +9,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: checkout repo
+      uses: actions/checkout@v3
     - name: run bash script
       run: ./init.sh 
       shell: bash
