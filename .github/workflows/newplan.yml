@@ -53,7 +53,7 @@ jobs:
             
             - uses: actions/checkout@v4
             - name: Calling actions
-              uses: ./.github/actions/terraform-init
+              uses: day1devops/Pipelines/.github/actions/terraform-init
               with:
                 MY_SECRET: ${ MY_SECRET }
               
