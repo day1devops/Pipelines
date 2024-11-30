@@ -10,6 +10,9 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
+    - name: run ls 
+      run: ls -ltr
+      shell: bash
     - name: run bash script
       run:  init.sh 
       shell: bash
