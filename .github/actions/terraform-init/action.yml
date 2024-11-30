@@ -11,7 +11,7 @@ runs:
   steps:
     - uses: actions/checkout@v4
     - name: run bash script
-      run: ./init.sh 
+      run:  init.sh 
       shell: bash
       env:
         MY_SECRET: ${{ inputs.MY_SECRET }}
